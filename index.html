@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Animation</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./animation.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Animation</title>
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="./animation.css" />
-</head>
+  <body>
+    <div class="container">
+      <span id="logo-wrap">
+        <p id="logo">遇见王沥川</p>
+      </span>
+    </div>
+    <div class="select-wrap">
+      <select class="selection">
+        <option>bounce</option>
+        <option>flash</option>
+        <option>pulse</option>
+        <option>rubberBand</option>
+        <option>shake</option>
+      </select>
+      <button id="btn">click me</button>
+    </div>
+    <script>
+      const oText = document.getElementById("logo-wrap");
+      const oBtn = document.getElementById("btn");
+      const oSelect = document.getElementsByClassName("selection")[0];
+      this.timer = null;
 
-<body>
-  <div class="container">
-    <p class="container animation-flash">遇见王沥川</p>
-  </div>
-</body>
-
+      oBtn.onclick = function() {
+        const value = oSelect.value;
+        if (!this.timer) {
+          oText.className = `animation-${value}`;
+          this.timer = setTimeout(() => {
+            this.timer = null;
+            oText.className = "";
+          }, 2500);
+        }
+      };
+    </script>
+  </body>
 </html>
